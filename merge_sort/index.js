@@ -12,25 +12,20 @@ function merge(left, right) {
       rightIndex++;
     }
   }
+
   return resultArray
     .concat(left.slice(leftIndex))
     .concat(right.slice(rightIndex));
 }
 
 function mergeSort(arr) {
-  //if only one element in array then its sorted
-  //sort left half of nums
-  //sort right half of nums
-  //merge the sorted halves
   if (arr.length === 1) return arr;
 
   let midPoint = Math.floor(arr.length / 2);
   let leftArr = arr.slice(0, midPoint);
-  let rightArr = arr.slice(midPoint, arr.length);
+  let rightArr = arr.slice(midPoint);
 
   return merge(mergeSort(leftArr), mergeSort(rightArr));
 }
 
-let sortedArr = [1, 2, 3, 4, 5];
-let unsortedArr = [5, 2, 1, 4, 3, 8, 9];
-console.log(mergeSort(unsortedArr));
+console.log(mergeSort([5, 4, 27, 8, 1]));
